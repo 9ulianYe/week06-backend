@@ -332,37 +332,50 @@ namespace week06_backend
 
             //Ch7 Q8寫一個function，輸入一個日期，把該日期轉成民國XX年XX月XX日 星期X 格式 
 
-            string ConvertToROCWithWeek(string input)
+            //string ConvertToROCWithWeek(string input)
+            //{
+            //    string pattern = @"^(\d{4})[\/](\d{1,2})[\/](\d{1,2})$";
+            //    Match match = Regex.Match(input, pattern);
+
+            //    if (!match.Success)
+            //    {
+            //        Console.WriteLine("日期格式錯誤！請使用 yyyy/MM/dd");
+            //        return null;
+            //    }
+
+            //    if (!DateTime.TryParse(input, out DateTime date))
+            //    {
+            //        Console.WriteLine("此日期不存在，例如 2025/02/30");
+            //        return null;
+            //    }
+
+            //    int rocYear = date.Year - 1911;
+            //    string weekday = date.ToString("dddd", new CultureInfo("zh-TW"));
+
+            //    return $"民國{rocYear}年{date.Month:D2}月{date.Day:D2}日 {weekday}";
+            //}
+
+            //Console.Write("請輸入日期（例如 2025/07/11）= ");
+            //string input = Console.ReadLine();
+
+            //string result = ConvertToROCWithWeek(input);
+            //if (result != null)
+            //    Console.WriteLine(result);
+
+            //Q9 寫一個function，回傳輸入的年是否閏年
+            bool IsLeapYear(int year)
             {
-                string pattern = @"^(\d{4})[\/](\d{1,2})[\/](\d{1,2})$";
-                Match match = Regex.Match(input, pattern);
-
-                if (!match.Success)
-                {
-                    Console.WriteLine("日期格式錯誤！請使用 yyyy/MM/dd");
-                    return null;
-                }
-
-                if (!DateTime.TryParse(input, out DateTime date))
-                {
-                    Console.WriteLine("此日期不存在，例如 2025/02/30");
-                    return null;
-                }
-
-                int rocYear = date.Year - 1911;
-                string weekday = date.ToString("dddd", new CultureInfo("zh-TW"));
-
-                return $"民國{rocYear}年{date.Month:D2}月{date.Day:D2}日 {weekday}";
+                return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
             }
 
-            Console.Write("請輸入日期（例如 2025/07/11）= ");
-            string input = Console.ReadLine();
+            Console.Write("請輸入年份：");
 
-            string result = ConvertToROCWithWeek(input);
-            if (result != null)
-                Console.WriteLine(result);
+            int input = Convert.ToInt32(Console.ReadLine());
 
-
+            if (IsLeapYear(input))
+                Console.WriteLine($"{input} 是閏年");
+            else
+                Console.WriteLine($"{input} 不是閏年");
 
         }   
     }

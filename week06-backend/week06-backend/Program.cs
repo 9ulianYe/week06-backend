@@ -107,7 +107,7 @@ namespace week06_backend
             //    {
             //        Console.WriteLine("沒出現過");
             //        allInput += $"[{input}]";
-                    
+
             //    }
             //    i++;
             //}
@@ -126,19 +126,26 @@ namespace week06_backend
 
             //Q10 輸入時間，顯示幾時幾分，例如輸入11:30，輸出11點30分
 
-            Console.Write("請輸入時間（格式：HH:mm）：");
-            string input = Console.ReadLine();
-            if (Regex.IsMatch(input, @"^([01]\d|2[0-3]):([0-5]\d)$"))
-            {
-                string[] parts = input.Split(':');
-                Console.WriteLine(parts[0] + "點" + parts[1] + "分");
-            }
-            else {
-                Console.WriteLine("格式錯誤，請輸入 HH:mm，例如 09:30");
-            }
+            //Console.Write("請輸入時間（格式：HH:mm）：");
+            //string input = Console.ReadLine();
+            //if (Regex.IsMatch(input, @"^([01]\d|2[0-3]):([0-5]\d)$"))
+            //{
+            //    string[] parts = input.Split(':');
+            //    Console.WriteLine(parts[0] + "點" + parts[1] + "分");
+            //}
+            //else {
+            //    Console.WriteLine("格式錯誤，請輸入 HH:mm，例如 09:30");
+            //}
 
+            //Q11 輸入的字，轉成HTML
+            Console.Write("請輸入名字：");
+            string input = Console.ReadLine();
+            string[] names = input.Split(',');
+            Console.WriteLine("<ul>");
+            foreach (string name in names) { 
+                Console.WriteLine($"\t<li>{name.Trim()}</li>");
+            }
+            Console.WriteLine("</ul>");
         }   
-            
-            
     }
 }

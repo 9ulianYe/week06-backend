@@ -1,6 +1,7 @@
 ﻿using System.IO.Compression;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace week06_backend
 {
@@ -256,24 +257,41 @@ namespace week06_backend
 
             //Ch7 Q5 寫一個function，回傳輸入的值是否符合身分證字號格式
 
-            bool IsID(string input)
+            //bool IsID(string input)
+            //{
+            //    return Regex.IsMatch(input, @"^[A-Z][12]\d{8}$");
+            //}
+
+            //Console.Write("請輸入身份證字號：");
+            //string id = Console.ReadLine();
+
+            //if (IsID(id))
+            //{
+            //    Console.WriteLine("這是正確的身份證格式");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("格式錯誤！");
+            //}
+
+            //Ch7 Q6 寫一個function，若輸入的文字大於Ｎ個，則超過的字不要，變成點點點?
+
+            string Function (string input, int maxLength)
             {
-                return Regex.IsMatch(input, @"^[A-Z][12]\d{8}$");
+                if (input.Length <= maxLength)
+                    return input;
+                else
+                    return input.Substring(0, maxLength) + "...";
             }
 
-            Console.Write("請輸入身份證字號：");
-            string id = Console.ReadLine();
+            Console.Write("請輸入最多顯示N個字：");
+            int n = Convert.ToInt32(Console.ReadLine());
 
-            if (IsID(id))
-            {
-                Console.WriteLine("這是正確的身份證格式");
-            }
-            else
-            {
-                Console.WriteLine("格式錯誤！");
-            }
+            Console.Write("請輸入一段文字：");
+            string input = Console.ReadLine();
 
-
+            string result = Function(input, n);
+            Console.WriteLine($"結果：{result}");
 
         }   
     }

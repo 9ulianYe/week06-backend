@@ -93,24 +93,35 @@ namespace week06_backend
 
             //Q8.連續輸入10組字，若沒輸入過，就顯示沒出現過，若輸入過，就顯示輸入過。
 
-            string allInput = " ";
-           
-            int i = 0;
-            while (i < 10) {
-                Console.Write($"第{i+1}次輸入 : ");
-                string input = Console.ReadLine();
+            //string allInput = " ";
+            //int i = 0;
+            //while (i < 10) {
+            //    Console.Write($"第{i+1}次輸入 : ");
+            //    string input = Console.ReadLine();
 
-                if (allInput.Contains($"[{input}]"))
-                {
-                    Console.WriteLine("輸入過");
-                }
-                else
-                {
-                    Console.WriteLine("沒出現過");
-                    allInput += $"[{input}]";
+            //    if (allInput.Contains($"[{input}]"))
+            //    {
+            //        Console.WriteLine("輸入過");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("沒出現過");
+            //        allInput += $"[{input}]";
                     
-                }
-                i++;
+            //    }
+            //    i++;
+            //}
+
+            //Q9. 用字母大小寫來模擬波浪舞的動作後輸出
+
+            Console.Write("請輸入一段字：");
+            string input = Console.ReadLine().ToLower();
+
+            for (int i = 0; i < input.Length; i++) {
+                char[] chars = input.ToCharArray();
+                chars[i] = Char.ToUpper(chars[i]);
+                string result = new string(chars);
+                Console.WriteLine(result);  
             }
 
         }   

@@ -114,14 +114,27 @@ namespace week06_backend
 
             //Q9. 用字母大小寫來模擬波浪舞的動作後輸出
 
-            Console.Write("請輸入一段字：");
-            string input = Console.ReadLine().ToLower();
+            //Console.Write("請輸入一段字：");
+            //string input = Console.ReadLine().ToLower();
 
-            for (int i = 0; i < input.Length; i++) {
-                char[] chars = input.ToCharArray();
-                chars[i] = Char.ToUpper(chars[i]);
-                string result = new string(chars);
-                Console.WriteLine(result);  
+            //for (int i = 0; i < input.Length; i++) {
+            //    char[] chars = input.ToCharArray();
+            //    chars[i] = Char.ToUpper(chars[i]);
+            //    string result = new string(chars);
+            //    Console.WriteLine(result);  
+            //}
+
+            //Q10 輸入時間，顯示幾時幾分，例如輸入11:30，輸出11點30分
+
+            Console.Write("請輸入時間（格式：HH:mm）：");
+            string input = Console.ReadLine();
+            if (Regex.IsMatch(input, @"^([01]\d|2[0-3]):([0-5]\d)$"))
+            {
+                string[] parts = input.Split(':');
+                Console.WriteLine(parts[0] + "點" + parts[1] + "分");
+            }
+            else {
+                Console.WriteLine("格式錯誤，請輸入 HH:mm，例如 09:30");
             }
 
         }   

@@ -167,12 +167,38 @@ namespace week06_backend
             //Console.WriteLine(sum);
 
             //Q13 輸入一串文字，倒著輸出，例如輸入：Justin，輸出nitsuJ
-            Console.Write("請輸入一串文字：");
-            string input = Console.ReadLine();
-            char[] chars = input.ToCharArray();
-            Array.Reverse(chars); 
-            string newString = new string(chars);
-            Console.WriteLine(newString);
+
+            //Console.Write("請輸入一串文字：");
+            //string input = Console.ReadLine();
+            //char[] chars = input.ToCharArray();
+            //Array.Reverse(chars); 
+            //string newString = new string(chars);
+            //Console.WriteLine(newString);
+
+
+            //===========================================================//
+            // Ch7 Function
+            
+            //Q1 寫一個function 可以把一般對話框的文字轉成HTML
+            static string ConvertToHtml(string input)
+            {
+                return input
+                    .Replace("&", "&amp;")       
+                    .Replace(">", "&gt;")
+                    .Replace("<", "&lt;")
+                    .Replace("\r\n", "<br>")
+                    .Replace("|", "&brvbar;")
+                    .Replace(" ", "&nbsp;");
+            }
+            Console.Write("請輸入對話框的文字：");
+            string text = Console.ReadLine();
+            string html = ConvertToHtml(text);
+            Console.WriteLine("HTML：");
+            Console.WriteLine(html);
+
+
+
+
 
         }   
     }

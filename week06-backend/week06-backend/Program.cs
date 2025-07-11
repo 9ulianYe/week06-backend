@@ -83,12 +83,35 @@ namespace week06_backend
 
             //Q7.輸入一串字，顯示輸入幾個字
 
-            Console.Write("請輸入一段文字：");
-            string input = Console.ReadLine();
-            int wordCount = input.Length;
-            Console.WriteLine(wordCount);
+            //Console.Write("請輸入一段文字：");
+            //string input = Console.ReadLine();
+            //int wordCount = input.Length;
+            //Console.WriteLine(wordCount);
 
 
+            //CH6. 字串 補充練習題
+
+            //Q8.連續輸入10組字，若沒輸入過，就顯示沒出現過，若輸入過，就顯示輸入過。
+
+            string allInput = " ";
+           
+            int i = 0;
+            while (i < 10) {
+                Console.Write($"第{i+1}次輸入 : ");
+                string input = Console.ReadLine();
+
+                if (allInput.Contains($"[{input}]"))
+                {
+                    Console.WriteLine("輸入過");
+                }
+                else
+                {
+                    Console.WriteLine("沒出現過");
+                    allInput += $"[{input}]";
+                    
+                }
+                i++;
+            }
 
         }   
             

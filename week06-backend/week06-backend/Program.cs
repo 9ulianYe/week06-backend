@@ -276,22 +276,59 @@ namespace week06_backend
 
             //Ch7 Q6 寫一個function，若輸入的文字大於Ｎ個，則超過的字不要，變成點點點?
 
-            string Function (string input, int maxLength)
+            //string Function (string input, int maxLength)
+            //{
+            //    if (input.Length <= maxLength)
+            //        return input;
+            //    else
+            //        return input.Substring(0, maxLength) + "...";
+            //}
+
+            //Console.Write("請輸入最多顯示N個字：");
+            //int n = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("請輸入一段文字：");
+            //string input = Console.ReadLine();
+
+            //string result = Function(input, n);
+            //Console.WriteLine($"結果：{result}");
+
+            //Ch7 Q7 寫一個function，輸入一個日期，把該日期轉成民國年.月.日格式
+
+            string ConvertToROC(string input) 
             {
-                if (input.Length <= maxLength)
-                    return input;
-                else
-                    return input.Substring(0, maxLength) + "...";
+                // 正則式：支援 YYYY/MM/DD、YYYY-MM-DD、YYYY.MM.DD
+                string pattern = @"^(\d{4})[\/\.-](\d{1,2})[\/\.-](\d{1,2})$";
+                Match match = Regex.Match(input, pattern);
+                if (!match.Success)
+                {
+                    Console.WriteLine("日期格式錯誤！");
+                    return null;
+                }
+                int year = int.Parse(match.Groups[1].Value);
+                int month = int.Parse(match.Groups[2].Value);
+                int day = int.Parse(match.Groups[3].Value);
+
+                // 建立 DateTime，避免無效日期如 2025/13/99
+                if (!DateTime.TryParse($"{year}/{month}/{day}", out DateTime date))
+                {   
+                    Console.WriteLine("日期格式錯誤！");
+                    return null;
+                }
+
+                int rocYear = year - 1911;
+                return $"{rocYear}.{month:D2}.{day:D2}";
             }
 
-            Console.Write("請輸入最多顯示N個字：");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("請輸入一段文字：");
+            Console.Write("請輸入日期：");
             string input = Console.ReadLine();
 
-            string result = Function(input, n);
-            Console.WriteLine($"結果：{result}");
+            string result = ConvertToROC(input);
+            if (result != null) 
+            { 
+                Console.WriteLine($"民國格式：{result}");
+            }
+
 
         }   
     }

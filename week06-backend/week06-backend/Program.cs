@@ -363,20 +363,27 @@ namespace week06_backend
             //    Console.WriteLine(result);
 
             //Q9 寫一個function，回傳輸入的年是否閏年
-            bool IsLeapYear(int year)
-            {
-                return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-            }
 
-            Console.Write("請輸入年份：");
+            //bool IsLeapYear(int year)
+            //{
+            //    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+            //}
 
-            int input = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("請輸入年份：");
 
-            if (IsLeapYear(input))
-                Console.WriteLine($"{input} 是閏年");
-            else
-                Console.WriteLine($"{input} 不是閏年");
+            //int input = Convert.ToInt32(Console.ReadLine());
 
+            //if (IsLeapYear(input))
+            //    Console.WriteLine($"{input} 是閏年");
+            //else
+            //    Console.WriteLine($"{input} 不是閏年");
+
+            //Q10 寫一個function，輸入手機號碼，回傳今天運勢
+            //(手機運勢算法：用你的手機號碼的最後四位數除以80，再減去整數部分（只留小數），再乘以80，
+            //就會得到一個數，這就是代表吉凶的數字，印出結果。)
+
+
+            
         }   
     }
 }

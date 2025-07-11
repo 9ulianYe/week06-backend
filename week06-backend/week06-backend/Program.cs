@@ -138,14 +138,33 @@ namespace week06_backend
             //}
 
             //Q11 輸入的字，轉成HTML
-            Console.Write("請輸入名字：");
+            //Console.Write("請輸入名字：");
+            //string input = Console.ReadLine();
+            //string[] names = input.Split(',');
+            //Console.WriteLine("<ul>");
+            //foreach (string name in names) { 
+            //    Console.WriteLine($"\t<li>{name.Trim()}</li>");
+            //}
+            //Console.WriteLine("</ul>");
+
+            //Q12 輸入7處數字，用空白隔開，輸出結果。例如：輸入‘11 19 12 25 1 7 12，輸出總和是87
+            Console.Write("請輸入7個數字，用空白隔開：");
             string input = Console.ReadLine();
-            string[] names = input.Split(',');
-            Console.WriteLine("<ul>");
-            foreach (string name in names) { 
-                Console.WriteLine($"\t<li>{name.Trim()}</li>");
+            string[] parts = input.Split(' ');
+            if (parts.Length != 7)
+            {
+                Console.WriteLine("請輸入正好 7 個數字！");
+                return;
             }
-            Console.WriteLine("</ul>");
+
+            int sum = 0;
+            foreach (string part in parts)
+            {   
+                int transToNumber = Convert.ToInt32(part); 
+                sum += int.Parse(part);
+            }
+            Console.WriteLine(sum);
+
         }   
     }
 }

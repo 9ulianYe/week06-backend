@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using System.Globalization;
+using System.IO.Compression;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
@@ -295,39 +296,72 @@ namespace week06_backend
 
             //Ch7 Q7 寫一個function，輸入一個日期，把該日期轉成民國年.月.日格式
 
-            string ConvertToROC(string input) 
+            //string ConvertToROC(string input) 
+            //{
+            //    // 正則式：支援 YYYY/MM/DD、YYYY-MM-DD、YYYY.MM.DD
+            //    string pattern = @"^(\d{4})[\/\.-](\d{1,2})[\/\.-](\d{1,2})$";
+            //    Match match = Regex.Match(input, pattern);
+            //    if (!match.Success)
+            //    {
+            //        Console.WriteLine("日期格式錯誤！");
+            //        return null;
+            //    }
+            //    int year = int.Parse(match.Groups[1].Value);
+            //    int month = int.Parse(match.Groups[2].Value);
+            //    int day = int.Parse(match.Groups[3].Value);
+
+            //    // 建立 DateTime，避免無效日期如 2025/13/99
+            //    if (!DateTime.TryParse($"{year}/{month}/{day}", out DateTime date))
+            //    {   
+            //        Console.WriteLine("日期格式錯誤！");
+            //        return null;
+            //    }
+
+            //    int rocYear = year - 1911;
+            //    return $"{rocYear}.{month:D2}.{day:D2}";
+            //}
+
+            //Console.Write("請輸入日期：");
+            //string input = Console.ReadLine();
+
+            //string result = ConvertToROC(input);
+            //if (result != null) 
+            //{ 
+            //    Console.WriteLine($"民國格式：{result}");
+            //}
+
+            //Ch7 Q8寫一個function，輸入一個日期，把該日期轉成民國XX年XX月XX日 星期X 格式 
+
+            string ConvertToROCWithWeek(string input)
             {
-                // 正則式：支援 YYYY/MM/DD、YYYY-MM-DD、YYYY.MM.DD
-                string pattern = @"^(\d{4})[\/\.-](\d{1,2})[\/\.-](\d{1,2})$";
+                string pattern = @"^(\d{4})[\/](\d{1,2})[\/](\d{1,2})$";
                 Match match = Regex.Match(input, pattern);
+
                 if (!match.Success)
                 {
-                    Console.WriteLine("日期格式錯誤！");
-                    return null;
-                }
-                int year = int.Parse(match.Groups[1].Value);
-                int month = int.Parse(match.Groups[2].Value);
-                int day = int.Parse(match.Groups[3].Value);
-
-                // 建立 DateTime，避免無效日期如 2025/13/99
-                if (!DateTime.TryParse($"{year}/{month}/{day}", out DateTime date))
-                {   
-                    Console.WriteLine("日期格式錯誤！");
+                    Console.WriteLine("日期格式錯誤！請使用 yyyy/MM/dd");
                     return null;
                 }
 
-                int rocYear = year - 1911;
-                return $"{rocYear}.{month:D2}.{day:D2}";
+                if (!DateTime.TryParse(input, out DateTime date))
+                {
+                    Console.WriteLine("此日期不存在，例如 2025/02/30");
+                    return null;
+                }
+
+                int rocYear = date.Year - 1911;
+                string weekday = date.ToString("dddd", new CultureInfo("zh-TW"));
+
+                return $"民國{rocYear}年{date.Month:D2}月{date.Day:D2}日 {weekday}";
             }
 
-            Console.Write("請輸入日期：");
+            Console.Write("請輸入日期（例如 2025/07/11）= ");
             string input = Console.ReadLine();
 
-            string result = ConvertToROC(input);
-            if (result != null) 
-            { 
-                Console.WriteLine($"民國格式：{result}");
-            }
+            string result = ConvertToROCWithWeek(input);
+            if (result != null)
+                Console.WriteLine(result);
+
 
 
         }   

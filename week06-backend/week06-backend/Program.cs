@@ -1,4 +1,7 @@
-﻿namespace week06_backend
+﻿using System.IO.Compression;
+using System.Text.RegularExpressions;
+
+namespace week06_backend
 {
     internal class Program
     {
@@ -26,20 +29,35 @@
 
             //Q3.輸入一段字，輸出每個之間多一個-，如輸入apple ，輸出a-p-p-l-e。
 
-            Console.Write("請輸入一個字 : ");
-            string input = Console.ReadLine();
-            char[] chars = input.ToCharArray();
-            string newString = " ";
+            //Console.Write("請輸入一個字 : ");
+            //string input = Console.ReadLine();
+            //char[] chars = input.ToCharArray();
+            //string newString = " ";
 
-            for (int i = 0; i < chars.Length; i++)
+            //for (int i = 0; i < chars.Length; i++)
+            //{
+            //    newString += chars[i];
+            //    if (i < chars.Length-1)
+            //    {
+            //        newString += "-";
+            //    }
+            //}
+            //Console.WriteLine(newString);
+
+            //Q4. 輸入一個檔名輸出副檔名，如輸入apple.jpg，輸出jpg
+            Console.Write("請輸入檔名： ");
+            string fileName = Console.ReadLine();
+            string pattern =@"^[^\\/:*?<>|]+\.[a-zA-Z0-9]+$";
+            if (Regex.IsMatch(fileName, pattern)) 
             {
-                newString += chars[i];
-                if (i < chars.Length-1)
-                {
-                    newString += "-";
-                }
+                string[] fileNamePart = fileName.Split('.');
+                string fileExtention = fileNamePart[^1];
+                Console.WriteLine($"副檔名是：{fileExtention}" );
             }
-            Console.WriteLine(newString);
+            else
+            {
+                Console.WriteLine("檔名格式不正確！");
+            }
 
         }   
 

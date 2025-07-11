@@ -179,22 +179,44 @@ namespace week06_backend
             //===========================================================//
             // Ch7 Function
             
-            //Q1 寫一個function 可以把一般對話框的文字轉成HTML
-            static string ConvertToHtml(string input)
+            //Ch7 Q1 寫一個function 可以把一般對話框的文字轉成HTML
+
+            //string ConvertToHtml(string input)
+            //{
+            //    return input
+            //        .Replace("&", "&amp;")       
+            //        .Replace(">", "&gt;")
+            //        .Replace("<", "&lt;")
+            //        .Replace("\r\n", "<br>")
+            //        .Replace("|", "&brvbar;")
+            //        .Replace(" ", "&nbsp;");
+            //}
+            //Console.Write("請輸入對話框的文字：");
+            //string text = Console.ReadLine();
+            //string html = ConvertToHtml(text);
+            //Console.WriteLine("HTML：");
+            //Console.WriteLine(html);
+
+            //Ch7 Q2寫一個function，回傳輸入的值是否數字 ?
+
+            bool IsNumber(string input)
             {
-                return input
-                    .Replace("&", "&amp;")       
-                    .Replace(">", "&gt;")
-                    .Replace("<", "&lt;")
-                    .Replace("\r\n", "<br>")
-                    .Replace("|", "&brvbar;")
-                    .Replace(" ", "&nbsp;");
+                return Regex.IsMatch(input, @"^-?\d+(\.\d+)?$");
             }
-            Console.Write("請輸入對話框的文字：");
-            string text = Console.ReadLine();
-            string html = ConvertToHtml(text);
-            Console.WriteLine("HTML：");
-            Console.WriteLine(html);
+
+            Console.Write("請輸入一個數值：");
+            string input = Console.ReadLine();
+
+            if (IsNumber(input))
+            {
+                Console.WriteLine("是數字！");
+            }
+            else
+            {
+                Console.WriteLine("不是數字！");
+            }
+
+
 
 
 

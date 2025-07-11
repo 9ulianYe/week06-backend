@@ -62,7 +62,7 @@ namespace week06_backend
             //}
 
             //Q5.輸入一個大於五個字的單字，若小於五個字輸出長度不夠，若大於五個字，則輸出前三個字
-            
+
             //Console.Write("請輸入一個單字：");
             //string word = Console.ReadLine();
             //if (word.Length < 5)
@@ -76,12 +76,22 @@ namespace week06_backend
 
             //Q6.輸入一段字，輸出把輸入的一段字裡面的我，改成小明，如輸入我在唱歌，輸出小明在唱歌。
 
+            //Console.Write("請輸入一段文字：");
+            //string input = Console.ReadLine();
+            //string wordReplace = input.Replace("我", "小明");
+            //Console.WriteLine(wordReplace);
+
+            //Q7.輸入一串字，顯示輸入幾個字
+
             Console.Write("請輸入一段文字：");
             string input = Console.ReadLine();
-            string wordReplace = input.Replace("我", "小明");
-            Console.WriteLine(wordReplace);
-            
-        }   
+            int wordCount = input.Length;
+            Console.WriteLine(wordCount);
 
+
+
+        }   
+            
+            
     }
 }

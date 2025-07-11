@@ -237,22 +237,41 @@ namespace week06_backend
 
             //Ch7 Q4 寫一個function，回傳輸入的值是否符合手機格式
 
-            bool IsTaiwanPhone(string input)
+            //bool IsTaiwanPhone(string input)
+            //{
+            //    return Regex.IsMatch(input, @"^09\d{8}$");
+            //}
+
+            //Console.Write("請輸入手機號碼：");
+            //string input = Console.ReadLine();
+
+            //if (IsTaiwanPhone(input))
+            //{
+            //    Console.WriteLine("這是正確的手機格式");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("格式錯誤！");
+            //} 
+
+            //Ch7 Q5 寫一個function，回傳輸入的值是否符合身分證字號格式
+
+            bool IsID(string input)
             {
-                return Regex.IsMatch(input, @"^09\d{8}$");
+                return Regex.IsMatch(input, @"^[A-Z][12]\d{8}$");
             }
 
-            Console.Write("請輸入手機號碼：");
-            string input = Console.ReadLine();
+            Console.Write("請輸入身份證字號：");
+            string id = Console.ReadLine();
 
-            if (IsTaiwanPhone(input))
+            if (IsID(id))
             {
-                Console.WriteLine("這是正確的手機格式");
+                Console.WriteLine("這是正確的身份證格式");
             }
             else
             {
                 Console.WriteLine("格式錯誤！");
-            } 
+            }
 
 
 

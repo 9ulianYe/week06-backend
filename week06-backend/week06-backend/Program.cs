@@ -178,7 +178,7 @@ namespace week06_backend
 
             //===========================================================//
             // Ch7 Function
-            
+
             //Ch7 Q1 寫一個function 可以把一般對話框的文字轉成HTML
 
             //string ConvertToHtml(string input)
@@ -199,24 +199,40 @@ namespace week06_backend
 
             //Ch7 Q2寫一個function，回傳輸入的值是否數字 ?
 
-            bool IsNumber(string input)
+            //bool IsNumber(string input)
+            //{
+            //    return Regex.IsMatch(input, @"^-?\d+(\.\d+)?$");
+            //}
+
+            //Console.Write("請輸入一個數值：");
+            //string input = Console.ReadLine();
+
+            //if (IsNumber(input))
+            //{
+            //    Console.WriteLine("是數字！");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("不是數字！");
+            //}
+
+            //Ch7 Q3 寫一個function，回傳輸入的值是否符合Ｅ－ｍａｉｌ格式
+            bool IsEmail(string input)
             {
-                return Regex.IsMatch(input, @"^-?\d+(\.\d+)?$");
+                return Regex.IsMatch(input, @"^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$");
             }
 
-            Console.Write("請輸入一個數值：");
+            Console.Write("請輸入 Email：");
             string input = Console.ReadLine();
 
-            if (IsNumber(input))
+            if (IsEmail(input))
             {
-                Console.WriteLine("是數字！");
+                Console.WriteLine("這是正確的 Email 格式");
             }
             else
             {
-                Console.WriteLine("不是數字！");
-            }
-
-
+                Console.WriteLine("格式錯誤！");
+            } 
 
 
 

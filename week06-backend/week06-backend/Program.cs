@@ -142,28 +142,37 @@ namespace week06_backend
             //string input = Console.ReadLine();
             //string[] names = input.Split(',');
             //Console.WriteLine("<ul>");
-            //foreach (string name in names) { 
+            //foreach (string name in names)
+            //{
             //    Console.WriteLine($"\t<li>{name.Trim()}</li>");
             //}
             //Console.WriteLine("</ul>");
 
             //Q12 輸入7處數字，用空白隔開，輸出結果。例如：輸入‘11 19 12 25 1 7 12，輸出總和是87
-            Console.Write("請輸入7個數字，用空白隔開：");
-            string input = Console.ReadLine();
-            string[] parts = input.Split(' ');
-            if (parts.Length != 7)
-            {
-                Console.WriteLine("請輸入正好 7 個數字！");
-                return;
-            }
 
-            int sum = 0;
-            foreach (string part in parts)
-            {   
-                int transToNumber = Convert.ToInt32(part); 
-                sum += int.Parse(part);
-            }
-            Console.WriteLine(sum);
+            //Console.Write("請輸入7個數字，用空白隔開：");
+            //string input = Console.ReadLine();
+            //string[] parts = input.Split(' ');
+            //if (parts.Length != 7)
+            //{
+            //    Console.WriteLine("請輸入正好 7 個數字！");
+            //    return;
+            //}
+            //int sum = 0;
+            //foreach (string part in parts)
+            //{   
+            //    int transToNumber = Convert.ToInt32(part); 
+            //    sum += int.Parse(part);
+            //}
+            //Console.WriteLine(sum);
+
+            //Q13 輸入一串文字，倒著輸出，例如輸入：Justin，輸出nitsuJ
+            Console.Write("請輸入一串文字：");
+            string input = Console.ReadLine();
+            char[] chars = input.ToCharArray();
+            Array.Reverse(chars); 
+            string newString = new string(chars);
+            Console.WriteLine(newString);
 
         }   
     }

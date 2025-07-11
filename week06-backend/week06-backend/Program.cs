@@ -217,24 +217,42 @@ namespace week06_backend
             //}
 
             //Ch7 Q3 寫一個function，回傳輸入的值是否符合Ｅ－ｍａｉｌ格式
-            bool IsEmail(string input)
+
+            //bool IsEmail(string input)
+            //{
+            //    return Regex.IsMatch(input, @"^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$");
+            //}
+
+            //Console.Write("請輸入 Email：");
+            //string input = Console.ReadLine();
+
+            //if (IsEmail(input))
+            //{
+            //    Console.WriteLine("這是正確的 Email 格式");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("格式錯誤！");
+            //} 
+
+            //Ch7 Q4 寫一個function，回傳輸入的值是否符合手機格式
+
+            bool IsTaiwanPhone(string input)
             {
-                return Regex.IsMatch(input, @"^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$");
+                return Regex.IsMatch(input, @"^09\d{8}$");
             }
 
-            Console.Write("請輸入 Email：");
+            Console.Write("請輸入手機號碼：");
             string input = Console.ReadLine();
 
-            if (IsEmail(input))
+            if (IsTaiwanPhone(input))
             {
-                Console.WriteLine("這是正確的 Email 格式");
+                Console.WriteLine("這是正確的手機格式");
             }
             else
             {
                 Console.WriteLine("格式錯誤！");
             } 
-
-
 
 
 
